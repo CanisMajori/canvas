@@ -4,18 +4,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         #canvas{
-
+            background-color: dimgrey;
         }
 
     </style>
 </head>
 <body>
-<canvas id="canvas">
-
+<canvas id="canvas" class="canvas" width="2000px" height="1000px">
+        你的浏览器不支持canvas画布
 
 </canvas>
 <script>
+    var canvas=document.getElementById('canvas');//找到画布
+                //var canvas=document.getElementsByClassName('canvas');用于打印节点信息
+                //console.log(canvas);
+    var pen=canvas.getContext('2d');//在画布上创建2d画笔
+    pen.beginPath();
+    pen.moveTo(80,200);
+    pen.lineTo(200,200);
+    pen.lineTo(250,80);
+    pen.lineTo(300,200);
+    pen.lineTo(420,200);
+    pen.lineTo(300,250);
+    pen.lineTo(380,400);
+    pen.lineTo(250,300);
+    pen.lineTo(120,400);
+    pen.lineTo(200,250);
+    pen.closePath();
+    pen.fillStyle='red';
+    pen.fill();
+    pen.lineWidth='5';//宽度
+    pen.strokeStyle='#eae';
+    pen.fillStyle='#222';
+
+
+    pen.stroke();
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" style="background-color:dimgrey;" width="10008px" height="2000px">
+    no support
+</canvas>
+//复联logo
+<script>
+    var canvas=document.getElementById('canvas');
+    var c=canvas.getContext('2d');
+    //外圈
+    c.beginPath();
+    c.lineWidth='30';
+    c.strokeStyle='#ddd';
+    c.arc(500,400,210,0,180);
+    c.stroke();
+    //A与圆环左侧空隙
+    c.beginPath();
+    c.lineWidth='15';
+    c.strokeStyle='dimgrey';
+    c.moveTo(362,518);
+    c.lineTo(338,573);
+    c.stroke();
+    //A与圆环右侧空隙
+    c.beginPath();
+    c.lineWidth='15';
+    c.strokeStyle='dimgrey';
+    c.moveTo(432,569);
+    c.lineTo(413,613);
+    c.stroke();
+    //A
+    c.beginPath();
+    c.strokeStyle='#ddd';
+    c.lineWidth='70';
+    c.moveTo(340,680);
+    c.lineTo(580,100);
+    c.lineTo(580,550);
+    c.stroke();
+    c.clearRect(500,0,500,100);
+    //A中间的横线
+    c.beginPath();
+    c.strokeStyle='#ddd';
+    c.lineWidth='75';
+    c.moveTo(400,480);
+    c.lineTo(580,480);
+    c.stroke();
+    //箭头效果
+    c.beginPath();
+    c.lineWidth='20';
+    c.strokeStyle='dimgrey';
+    c.moveTo(529,402);
+    c.lineTo(614,478);
+    c.lineTo(515,572);
+    c.stroke();
+    c.clearRect(277,664,500,100);
+
+</script>
+//美队盾牌
+<script>
+    //美队盾牌
+    //最外红圈
+    c.beginPath();
+    c.strokeStyle='#AA2536';
+    c.lineWidth='40';
+    c.shadowBlur=20;
+    c.shadowColor='#AA2536';
+    c.arc(491,976,200,0,180);
+    c.stroke();
+    //第二圈白
+    c.beginPath();
+    c.strokeStyle='#E0DEDF';
+    c.lineWidth='40';
+    c.shadowBlur=20;
+    c.shadowColor='#E0DEDF';
+    c.arc(491,976,160,0,180);
+    c.stroke();
+    //第三圈红
+    c.beginPath();
+    c.strokeStyle='#C94455';
+    c.lineWidth='40';
+    c.shadowBlur=20;
+    c.shadowColor='#C94455';
+    c.arc(491,976,120,0,180);
+    c.fillStyle='#1157AB';
+    c.fill();
+    c.stroke();
+    //画内部星星      （上下文,星星内部小圆半径,大圆半径,旋转,边框线宽度,边框线颜色,填充颜色,阴影范围模糊度,阴影颜色 ）
+    function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillStyle,shadowblur,shadowcolor){
+        cxt.beginPath();
+        for( var i = 0 ; i < 5 ; i ++){
+            cxt.lineTo(Math.cos((18+72*i - rot)/180*Math.PI) * R + x ,- Math.sin((18+72*i - rot )/180*Math.PI) * R + y);
+            cxt.lineTo(Math.cos((54+72*i - rot)/180*Math.PI) * r + x ,- Math.sin((54+72*i - rot )/180*Math.PI) * r + y);
+        }                       //角度
+        cxt.closePath();//连接头尾
+        cxt.lineWidth = borderWidth;
+        cxt.strokeStyle = borderStyle;
+        cxt.fillStyle = fillStyle;
+        cxt.shadowBlur=shadowblur;
+        cxt.shadowColor=shadowcolor;
+        cxt.fill();
+        cxt.stroke();
+    }
+    drawStar(c,90,40,491,976,180,5,'white','white',20,'white');
+</script>
+//获取坐标
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).mousemove(function(e){
+      console.log(e.pageX + ", " + e.pageY);
+    });
+</script>
+</body>
+</html>

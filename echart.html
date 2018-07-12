@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            background-color: dimgrey;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="canvas" class="canvas" width="2000px" height="1000px">
+    你的浏览器不支持canvas画布
+
+</canvas>
+<script>
+    var data = [
+        {value:335, name:'直接访问', color:"#f01"},
+        {value:310, name:'邮件营销', color:"#a01"},
+        {value:234, name:'联盟广告', color:"#102"},
+        {value:135, name:'视频广告', color:"#f89"},
+        {value:1548, name:'搜索引擎', color:"#add"}
+    ];
+    var sun=0;
+    for (var d of data){
+        sum+=d.value;
+    }
+    var canvas=document.getElementById('canvas');
+    var pen=canvas.getContext('2d');
+    pen.lineWidth='20';
+    var startdeg='30';
+    var cx=400,cy=249, r=180, lr=r+50;
+    for(var d of data){
+        var enddeg=startdeg+(d.value/sum)*360;
+        pen.beginPath();
+        pen.moveTo(cx,cy);
+        pen.strokeStyle=d.color;
+        pen.fillStyle=d.color;
+        pen.arc(cx,cy,r,Math.PI*startdeg/180,Math.PI*enddeg/180);//画弧
+        pen.fill();
+
+
+
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
